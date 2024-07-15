@@ -33,7 +33,7 @@ export const schema = configure({
     }
 }).schema({
     "customer": a.model({
-        id: a.integer().required(),
+        id: a.id().required(),
         name: a.string().required(),
         email: a.string().required(),
         phone: a.string(),
@@ -43,15 +43,9 @@ export const schema = configure({
         "id"
     ]),
     "opportunity": a.model({
-        id: a.integer().required(),
+        id: a.id().required(),
         name: a.string().required(),
         description: a.string(),
-        amount: a.integer().required(),
-        closedate: a.date(),
-        accountid: a.string().required(),
-        customerid: a.integer().required(),
-        createdat: a.datetime(),
-        updatedat: a.datetime(),
         stage: a.enum([
             "Closed_Lost",
             "Closed_Won",
@@ -59,7 +53,13 @@ export const schema = configure({
             "Proposal",
             "Qualification",
             "Prospecting"
-        ])
+        ]),
+        amount: a.integer().required(),
+        closedate: a.date(),
+        accountid: a.string().required(),
+        customerid: a.id().required(),
+        createdat: a.datetime(),
+        updatedat: a.datetime()
     }).identifier([
         "id"
     ])
