@@ -11,6 +11,16 @@ function App() {
     client.models.Todo.observeQuery().subscribe({
       next: (data) => setTodos([...data.items]),
     });
+
+    client.models.customer.create({
+      id: 2,
+      name: 'test',
+      email: 'test@test.com',
+      phone: '1234567890'
+    });
+
+    client.models.customer.list();
+
   }, []);
 
   function createTodo() {
